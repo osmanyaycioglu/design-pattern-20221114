@@ -1,4 +1,4 @@
-package org.training.design.patterns.atm.with.patterns;
+package org.training.design.patterns.atm.with.patterns.behavioral.command;
 
 import org.training.design.patterns.atm.EAccountType;
 

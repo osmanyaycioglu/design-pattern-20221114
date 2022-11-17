@@ -1,15 +1,15 @@
-package org.training.design.patterns.atm.with.patterns;
+package org.training.design.patterns.atm.with.patterns.behavioral.command;
 
-import org.training.design.patterns.atm.Account;
-import org.training.design.patterns.atm.Customer;
+import org.training.design.patterns.atm.models.Account;
+import org.training.design.patterns.atm.models.Customer;
 import org.training.design.patterns.atm.EAccountType;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class DepositAtmCommand extends AbstractAtmCommand {
+public class WithdrawAtmCommand extends AbstractAtmCommand {
 
-    public DepositAtmCommand(EAccountType accountType) {
+    public WithdrawAtmCommand(EAccountType accountType) {
         super(accountType);
     }
 
@@ -20,9 +20,9 @@ public class DepositAtmCommand extends AbstractAtmCommand {
                                       accountType);
         if (account != null) {
             BigDecimal amount = account.getAmount();
-            System.out.println("Yatıracağınız miktar : ");
-            BigDecimal depositAmount = scanner.nextBigDecimal();
-            account.setAmount(amount.add(depositAmount));
+            System.out.println("Çekeceğiniz miktar : ");
+            BigDecimal wamount = scanner.nextBigDecimal();
+            account.setAmount(amount.subtract(wamount));
             System.out.println(accountType + " yatırma İşleminiz gerçekleştirildi");
         } else {
             System.out.println(accountType + " accountunuz yok");
@@ -31,6 +31,6 @@ public class DepositAtmCommand extends AbstractAtmCommand {
 
     @Override
     public String commandString() {
-        return accountType + " para yatır";
+        return accountType + " para çek";
     }
 }

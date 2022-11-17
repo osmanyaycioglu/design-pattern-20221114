@@ -1,10 +1,10 @@
 package org.training.design.patterns.atm.with.patterns;
 
-import org.training.design.patterns.atm.Customer;
-import org.training.design.patterns.atm.EAccountType;
+import org.training.design.patterns.atm.models.Customer;
+import org.training.design.patterns.atm.with.patterns.behavioral.command.AtmCommandFactory;
+import org.training.design.patterns.atm.with.patterns.behavioral.command.IAtmCommand;
 import org.training.design.patterns.atm.with.patterns.customer.CustomerFacade;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
 

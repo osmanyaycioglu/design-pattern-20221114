@@ -1,5 +1,8 @@
 package org.training.design.patterns.atm;
 
+import org.training.design.patterns.atm.models.Account;
+import org.training.design.patterns.atm.models.Customer;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
@@ -8,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Atm {
     private Map<String, Customer> customerMap = new ConcurrentHashMap<>();
-    private DbConnection connection  = new DbConnection();
+    private DbConnection          connection  = new DbConnection();
 
 
     public Atm() {
@@ -143,8 +146,7 @@ public class Atm {
 
     private void show(Customer customer,
                       EAccountType accountType) {
-        Account account = customer.getAccounts()
-                                  .stream()
+        Account account = customer.accountStream()
                                   .filter(a -> a.getAccountType() == accountType)
                                   .findFirst()
                                   .orElse(null);
@@ -160,8 +162,7 @@ public class Atm {
                           BigDecimal transferAmount,
                           EAccountType accountType,
                           String accountNumber) {
-        Account account = customer.getAccounts()
-                                  .stream()
+        Account account = customer.accountStream()
                                   .filter(a -> a.getAccountType() == accountType)
                                   .findFirst()
                                   .orElse(null);
@@ -178,8 +179,7 @@ public class Atm {
     private void deposit(Customer customer,
                          BigDecimal depositAmount,
                          EAccountType accountType) {
-        Account account = customer.getAccounts()
-                                  .stream()
+        Account account = customer.accountStream()
                                   .filter(a -> a.getAccountType() == accountType)
                                   .findFirst()
                                   .orElse(null);
@@ -196,8 +196,7 @@ public class Atm {
     private void withdraw(Customer customer,
                           BigDecimal withdrawAmount,
                           EAccountType accountType) {
-        Account account = customer.getAccounts()
-                                  .stream()
+        Account account = customer.accountStream()
                                   .filter(a -> a.getAccountType() == accountType)
                                   .findFirst()
                                   .orElse(null);

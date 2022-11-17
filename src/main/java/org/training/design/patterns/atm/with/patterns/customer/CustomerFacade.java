@@ -1,6 +1,6 @@
 package org.training.design.patterns.atm.with.patterns.customer;
 
-import org.training.design.patterns.atm.Customer;
+import org.training.design.patterns.atm.models.Customer;
 
 public class CustomerFacade {
     private final CustomerManager          customerManager;

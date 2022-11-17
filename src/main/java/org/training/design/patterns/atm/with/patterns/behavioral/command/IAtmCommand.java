@@ -1,7 +1,7 @@
-package org.training.design.patterns.atm.with.patterns;
+package org.training.design.patterns.atm.with.patterns.behavioral.command;
 
-import org.training.design.patterns.atm.Account;
-import org.training.design.patterns.atm.Customer;
+import org.training.design.patterns.atm.models.Account;
+import org.training.design.patterns.atm.models.Customer;
 import org.training.design.patterns.atm.EAccountType;
 
 import java.util.Scanner;
@@ -14,8 +14,7 @@ public interface IAtmCommand {
 
     default Account findAccount(Customer customer,
                                 EAccountType accountType) {
-        return customer.getAccounts()
-                       .stream()
+        return customer.accountStream()
                        .filter(a -> a.getAccountType() == accountType)
                        .findFirst()
                        .orElse(null);
