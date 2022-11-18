@@ -16,7 +16,7 @@ public class CustomerManager {
     public void init() {
         Customer customer = Customer.builder()
                                     .withName("osman")
-                                    .withSurname("yaycıoğlu")
+                                    .withSurname("yay")
                                     .withUsername("osmany")
                                     .withPassword("123456")
                                     .withCustomerType(ECustomerType.COPPER)

@@ -1,6 +1,8 @@
 package org.training.design.patterns.atm.with.patterns;
 
 import org.training.design.patterns.atm.models.Customer;
+import org.training.design.patterns.atm.with.patterns.behavioral.chain.CustomerRuleFactory;
+import org.training.design.patterns.atm.with.patterns.behavioral.chain.ICustomerRule;
 import org.training.design.patterns.atm.with.patterns.behavioral.command.AtmCommandFactory;
 import org.training.design.patterns.atm.with.patterns.behavioral.command.IAtmCommand;
 import org.training.design.patterns.atm.with.patterns.customer.CustomerFacade;
@@ -19,8 +21,9 @@ public class Atm {
             String password = scanner.nextLine();
             Customer customer = customerFacade.login(username,
                                  password);
-
             if (customer != null) {
+                ICustomerRule ruleChain = CustomerRuleFactory.getRuleChain(customer);
+                ruleChain.run(customer);
                 root:
                 while (true) {
                     List<IAtmCommand> customerAtmCommands = AtmCommandFactory.getCustomerAtmCommands(customer);
